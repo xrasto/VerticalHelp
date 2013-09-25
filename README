@@ -1,0 +1,21 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4729
+
+This is a very simple script to display help in an appropriately sized vertical window.
+
+With a wide-screen monitor, vim's help is best displayed in a vertical window; but the command 'vertical help' opens a help window taking up half of the display. In my case, it opens a 250 column window to display an 80 column file.  The width of the vertical window is the buffer's textwidth, typically specified in the file's modeline.  
+
+USAGE:
+:H  <topic>    " Opens a help window vertically on the right
+
+If a help topic was opened horizontally using :h, then the command :H will move and resize the window. 
+If a help window already exists that is vertical and sized appropriately, then :H will toggle between the help window and the previous window without having to <C-W>p.
+
+:H allows for command-line completion, just as :h does.
+
+OPTIONS:
+g:vertical_help_left -- Define this to display the window on the left instead of the right.
+
+NOTES:
+I especially like to use this to display custom cheatsheets, which I format as vim help files.  I put the cheatsheets under vimfiles/bundle/cheatsheets/doc.  Then I call, for example, 
+:H git-cheatsheet, to pull up my notes. By basing the window width on textwidth, the cheatsheets are not limited to 80 columns.
+
