@@ -16,7 +16,7 @@ function! <SID>VerticalHelp(...)
     "...let's just move to the previous window 
     if &buftype == 'help' 
                 \ && a:1 == "" 
-                \ && winwidth(winnr()) == 80 
+                \ && ( winwidth(winnr()) == &tw) 
                 \ && &wfw 
         wincmd p
         return
@@ -53,7 +53,11 @@ function! <SID>VerticalHelp(...)
         else
             wincmd L
         endif
-        vertical resize 80 
+        if &tw > 0
+            exe "vertical resize ".string(&tw)
+        else
+            vertical resize 80
+        endif
         set wfw
     endif
     "Re-position the view in case a jump scolled it too far left
